@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: max-content;
+    align-items: center;
+    gap: 12px;
+}
+
+.city {}
+
+.temp {
+    font-size: 9.6rem;
+    font-weight: 200;
+}
+
+.status {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--secondary-color);
+}
+
+.hi-low {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}

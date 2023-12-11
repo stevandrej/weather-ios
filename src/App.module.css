@@ -1,0 +1,11 @@
+.hero{
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.forecast{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #FFF;
+    /* #EBEBF5 */
+    --secondary-color: rgba(235, 235, 245, 0.6);
+    --tertiary-color: rgba(235, 235, 245, 0.3);
+    --quaternary: rgba(235, 235, 245, 0.18);
+    --cyan-color: #40CBD8;
+
+    --weather-primary-color: #48319D;
+    --weather-primary-color-50: #48319d83;
+    --weather-primary-color-20: #48319d33;
+    --weather-secondary-color: #1F1D47;
+    --weather-tertiary-color: #C427FB;
+    --weather-quaternary-color: #E0D9FF;
+
+    --gray: #ebebf599;
+
+    --linear-gradient-primary: linear-gradient(168deg, #2E335A 1.62%, #1C1B33 95.72%);
+    --linear-gradient-primary-50: linear-gradient(168deg, rgba(46, 51, 90, 0.5) 1.62%, rgba(28, 27, 51, 0.5) 95.72%);
+
+    --radial-gradient-primary-50-top: radial-gradient(ellipse at top, rgb(247, 203, 253, 0.45) 0%,rgb(119, 88, 209, 0.3) 100%);
+}

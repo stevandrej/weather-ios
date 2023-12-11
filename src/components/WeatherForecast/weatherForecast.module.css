@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 12px;
+    width: 608px;
+    background: var(--linear-gradient-primary-50), var(--radial-gradient-primary-50-top);
+    box-shadow: -40px 60px 150px 0px rgba(59, 38, 123, 0.70);
+    backdrop-filter: blur(6px);
+    border-top-right-radius: 44px;
+    border-top-left-radius: 44px;
+}
