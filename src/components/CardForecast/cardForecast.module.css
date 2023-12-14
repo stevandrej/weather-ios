@@ -7,7 +7,7 @@
     border-radius: 30px;
     border: 1px solid var(--weather-primary-color-20);
     box-shadow: 5px 4px 10px 0px rgba(0, 0, 0, 0.25), 1px 1px 0px 0px rgba(255, 255, 255, 0.25) inset;
-    width: 60px;
+    width: 61px;
     background-color: var(--weather-primary-color-50);
     cursor: pointer;
     transition: background-color 0.1s ease-in-out;

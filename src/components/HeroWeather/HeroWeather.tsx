@@ -3,7 +3,7 @@ import styles from "./heroWeather.module.css";
 interface HeroWeatherProps {
 	city: string;
 	temperature: number;
-	status: string;
+	description: string;
 	high: number;
 	low: number;
 }
@@ -11,7 +11,7 @@ interface HeroWeatherProps {
 export default function HeroWeather({
 	city,
 	temperature,
-	status,
+	description,
 	high,
 	low,
 }: HeroWeatherProps) {
@@ -19,9 +19,9 @@ export default function HeroWeather({
 		<div className={styles.container}>
 			<div className="large">{city}</div>
 			<div className={styles.temp}>{temperature}&deg;</div>
-			<div>
-				<div className={styles.status}>{status}</div>
-				<div className={styles["hi-low"]}>
+			<div className={styles.desciptionContainer}>
+				<div className={styles.description}>{description}</div>
+				<div className={styles.hiLow}>
 					<span>H:{high}&deg;</span>
 					<span>L:{low}&deg;</span>
 				</div>

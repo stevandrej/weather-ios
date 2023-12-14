@@ -1,15 +1,24 @@
+import { HourlyForecast } from "@/types/forecast";
 import styles from "./cardForecast.module.css";
-import IconMoonWind from "@/assets/icons/moon-wind.png";
 
-export default function CardForecast() {
+export default function CardForecast({ weather }: { weather: HourlyForecast }) {
+	const time = new Date(weather.dt * 1000).toLocaleString("en-US", {
+		hour: "numeric",
+		hour12: true,
+	});
+
 	return (
 		<div className={styles.container}>
-			<div className={styles.time}>12 AM</div>
+			<div className={styles.time}>{time}</div>
 			<div className={styles.percentile}>
-				<img src={IconMoonWind} alt="weather forecast" width={32} />
-				<div>30%</div>
+				<img
+					src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+					alt="weather forecast"
+					width={32}
+				/>
+				<div>{Math.round(weather.pop * 100)}%</div>
 			</div>
-			<div>19&deg;</div>
+			<div>{Math.round(weather.main.temp)}&deg;</div>
 		</div>
 	);
 }

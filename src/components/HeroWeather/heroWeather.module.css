@@ -4,23 +4,26 @@
     max-width: max-content;
     align-items: center;
     gap: 12px;
+    max-width: 200px;
 }
-
-.city {}
 
 .temp {
     font-size: 9.6rem;
     font-weight: 200;
 }
 
-.status {
+.desciptionContainer {
+    width: 100%;
+}
+
+.description {
     font-size: 2rem;
     font-weight: 600;
     text-transform: capitalize;
     color: var(--secondary-color);
 }
 
-.hi-low {
+.hiLow {
     display: flex;
     justify-content: space-between;
     width: 100%;

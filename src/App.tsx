@@ -2,43 +2,60 @@ import AppContainer from "./components/AppContainer/AppContainer";
 import HeroWeather from "./components/HeroWeather/HeroWeather";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import styles from "./App.module.css";
-import { useFetch } from "./hooks/useFetch";
-import { WeatherData } from "./types/weather";
 import Spinner from "./components/Spinner/Spinner";
+import { useCurrentWeather } from "./services/useCurrentWeather";
+import { useHourlyWeather } from "./services/useHourlyWeather";
+import { roundTemperature } from "./utils/roundTemperature";
+
+const CITY_NAME = "Skopje";
 
 function App() {
+	const {
+		data: currentWeather,
+		error,
+		isLoading,
+	} = useCurrentWeather(CITY_NAME);
 
-	const { data, error, isLoading } = useFetch<WeatherData>(
-		"q=skopje&units=metric",
-		{
-			method: "GET",
-		}
-	);
+	const {
+		data: hourlyWeather,
+		error: forecastError,
+		isLoading: forecastIsLoading,
+	} = useHourlyWeather();
 
-	if (isLoading) return <Spinner />;
+	// Loading Spinner
+	if (isLoading || forecastIsLoading || (!currentWeather && !hourlyWeather)) {
+		return <Spinner />;
+	}
+
+	// Error handling
+	if (error) {
+		return <div>Error: {error.message}</div>;
+	}
+
+	if (forecastError) {
+		return <div>Error: {forecastError.message}</div>;
+	}
+
+	if (!currentWeather || !hourlyWeather) {
+		return <div>Failed fetching data.</div>;
+	}
+
+	const { name, main, weather } = currentWeather;
 
 	return (
 		<AppContainer>
-			{error ? (
-				<div>Error: {error.toString()}</div>
-			) : !data ? (
-				<div>Failed fetching data.</div>
-			) : (
-				<>
-					<div className={styles.hero}>
-						<HeroWeather
-							city={data.name}
-							temperature={Math.round(data.main.temp)}
-							status={data.weather[0].description}
-							high={Math.round(data.main.temp_max)}
-							low={Math.round(data.main.temp_min)}
-						/>
-					</div>
-					<div className={styles.forecast}>
-						<WeatherForecast />
-					</div>
-				</>
-			)}
+			<div className={styles.hero}>
+				<HeroWeather
+					city={name}
+					temperature={roundTemperature(main.temp)}
+					description={weather[0].description}
+					high={roundTemperature(main.temp_max)}
+					low={roundTemperature(main.temp_min)}
+				/>
+			</div>
+			<div className={styles.forecast}>
+				<WeatherForecast hourlyWeather={hourlyWeather} />
+			</div>
 		</AppContainer>
 	);
 }
