@@ -1,0 +1,23 @@
+.widget {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid var(--weather-primary-color-50);
+    box-shadow: 5px 4px 10px 0px rgba(0, 0, 0, 0.25), 1px 1px 0px 0px rgba(255, 255, 255, 0.25) inset;
+    border-radius: 8px;
+    background: var(--weather-primary-color-80);
+    gap: 16px;
+    width: 100%;
+}
+
+.title {
+    padding: 0;
+}
+
+.main {
+    display: flex;
+}
+
+.description {
+    font-size: 1.2rem;
+}

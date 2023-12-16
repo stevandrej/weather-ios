@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardForecast from "../CardForecast/CardForecast";
 import styles from "./weatherForecast.module.css";
 import { HourlyWeatherResponse } from "@/types/forecast";
+import WidgetsContainer from "../WidgetsContainer/WidgetsContainer";
 
 export default function WeatherForecast({
 	hourlyWeather,
@@ -23,6 +24,7 @@ export default function WeatherForecast({
 					<CardForecast weather={day} key={day.dt} />
 				))}
 			</div>
+			<WidgetsContainer />
 		</div>
 	);
 }
