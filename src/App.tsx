@@ -6,6 +6,7 @@ import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { useCurrentWeather } from "./services/useCurrentWeather";
 import { useHourlyWeather } from "./services/useHourlyWeather";
 import { roundTemperature } from "./utils/roundTemperature";
+import { CurrentWeatherContext } from "./store/currentWeatherContext";
 
 const CITY_NAME = "Skopje";
 
@@ -43,20 +44,22 @@ function App() {
 	const { name, main, weather } = currentWeather;
 
 	return (
-		<AppContainer>
-			<div className={styles.hero}>
-				<HeroWeather
-					city={name}
-					temperature={roundTemperature(main.temp)}
-					description={weather[0].description}
-					high={roundTemperature(main.temp_max)}
-					low={roundTemperature(main.temp_min)}
-				/>
-			</div>
-			<div className={styles.forecast}>
-				<WeatherForecast hourlyWeather={hourlyWeather} />
-			</div>
-		</AppContainer>
+		<CurrentWeatherContext.Provider value={currentWeather}>
+			<AppContainer>
+				<div className={styles.hero}>
+					<HeroWeather
+						city={name}
+						temperature={roundTemperature(main.temp)}
+						description={weather[0].description}
+						high={roundTemperature(main.temp_max)}
+						low={roundTemperature(main.temp_min)}
+					/>
+				</div>
+				<div className={styles.forecast}>
+					<WeatherForecast hourlyWeather={hourlyWeather} />
+				</div>
+			</AppContainer>
+		</CurrentWeatherContext.Provider>
 	);
 }
 
