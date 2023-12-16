@@ -1,8 +1,8 @@
+import styles from "./App.module.css";
 import AppContainer from "./components/AppContainer/AppContainer";
 import HeroWeather from "./components/HeroWeather/HeroWeather";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
-import styles from "./App.module.css";
-import Spinner from "./components/Spinner/Spinner";
 import { useCurrentWeather } from "./services/useCurrentWeather";
 import { useHourlyWeather } from "./services/useHourlyWeather";
 import { roundTemperature } from "./utils/roundTemperature";
@@ -24,7 +24,7 @@ function App() {
 
 	// Loading Spinner
 	if (isLoading || forecastIsLoading || (!currentWeather && !hourlyWeather)) {
-		return <Spinner />;
+		return <LoadingScreen />;
 	}
 
 	// Error handling

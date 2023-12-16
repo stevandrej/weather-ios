@@ -13,7 +13,7 @@ export default function CardForecast({ weather }: { weather: HourlyForecast }) {
 			<div className={styles.percentile}>
 				<img
 					src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-					alt="weather forecast"
+					alt={weather.weather[0].description}
 					width={32}
 				/>
 				<div>{Math.round(weather.pop * 100)}%</div>
